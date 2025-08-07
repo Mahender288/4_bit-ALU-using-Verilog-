@@ -1,0 +1,47 @@
+## This is a TestBench File we use to Test our verilog file
+
+module Alu_Tb;
+
+// Declare inputs as reg
+reg [3:0] A, B;
+reg [2:0] Alu_SEL;
+
+// Declare outputs as wire
+wire [3:0] Alu_OUT;
+wire CarryOut;
+
+// Instantiate the ALU module
+Alu DUT (
+  .A(A),
+  .B(B),
+  .Alu_sel(Alu_SEL),
+  .Alu_out(Alu_OUT),
+  .carry(CarryOut)
+);
+
+initial begin
+  // VCD dump for EPWave
+  $dumpfile("alu_dump.vcd");
+  $dumpvars(0, Alu_Tb);
+
+  // Display header
+  $display("A       B       ALU_SEL   ALU_OUT   CarryOut");
+  $monitor("%b   %b     %b       %b        %b", A, B, Alu_SEL, Alu_OUT, CarryOut);
+
+  // Apply inputs
+  A = 4'b0010;  
+  B = 4'b1000;
+
+  Alu_SEL = 3'b000; #100;
+  Alu_SEL = 3'b001; #100;
+  Alu_SEL = 3'b010; #100;
+  Alu_SEL = 3'b011; #100;
+  Alu_SEL = 3'b100; #100;
+  Alu_SEL = 3'b101; #100;
+  Alu_SEL = 3'b110; #100;
+  Alu_SEL = 3'b111; #100;
+
+  $finish;
+end
+
+endmodule
