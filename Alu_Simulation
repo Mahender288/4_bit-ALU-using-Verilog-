@@ -1,0 +1,13 @@
+VCD info: dumpfile alu_dump.vcd opened for output.
+A       B       ALU_SEL   ALU_OUT   CarryOut
+0010   1000     000       1010        0
+0010   1000     001       1010        0
+0010   1000     010       0000        0
+0010   1000     011       0000        0
+0010   1000     100       0000        0
+0010   1000     101       1010        0
+0010   1000     110       1111        0
+0010   1000     111       0101        0
+testbench.sv:42: $finish called at 800 (1s)
+
+
